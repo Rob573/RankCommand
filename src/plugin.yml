@@ -1,0 +1,7 @@
+name: RankCommand
+author: Phineas
+version: 1.0
+main: pw.phineas.rankcommand.Main
+commands:
+  rank:
+    description: Rank set command
