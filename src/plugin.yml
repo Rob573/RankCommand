@@ -2,6 +2,9 @@ name: RankCommand
 author: Phineas
 version: 1.0
 main: pw.phineas.rankcommand.Main
+depend: [PermissionsEx]
 commands:
   rank:
     description: Rank set command
+  rankreload:
+    description: Reloads the plugin config
