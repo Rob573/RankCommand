@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="spigot" level="project" />
     <orderEntry type="library" name="PermissionsEx-1.23.3" level="project" />
+    <orderEntry type="library" name="EssentialsGroupManager" level="project" />
   </component>
 </module>

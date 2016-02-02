@@ -32,7 +32,7 @@ public class Rank implements CommandExecutor {
         if(cmd.getName().equalsIgnoreCase("rank")) {
             if(sender.hasPermission("rankcommand.use")) {
                 if(args.length > 2 || args.length < 2) {
-                    sender.sendMessage(prefix + ChatColor.GRAY + "Use the command like this: /rank <player> <rank>");
+                    sender.sendMessage(prefix + colorize(this.plugin.getConfig().getString("WrongArgs")));
                     ((Player) sender).playSound(((Entity) sender).getLocation(), Sound.NOTE_BASS, 10, 1);
                 }
 
@@ -41,10 +41,10 @@ public class Rank implements CommandExecutor {
                     String group = args[1];
                     PermissionGroup[] groups = { PermissionsEx.getPermissionManager().getGroup(group) };
                     PermissionsEx.getUser(tplayer).setGroups(groups);
-                    sender.sendMessage(prefix + ChatColor.GRAY + "Set " + ChatColor.GREEN + tplayer.getName() + ChatColor.GRAY + "'s rank to " + ChatColor.GREEN + group);
+                    sender.sendMessage(prefix + colorize(this.plugin.getConfig().getString("SetRank")).replaceAll("%player%", tplayer.getName()).replaceAll("%rank%", group));
                     tplayer.playSound(tplayer.getLocation(), Sound.NOTE_PIANO, 10, 1);
                     ((Player) sender).playSound(((Entity) sender).getLocation(), Sound.NOTE_PIANO, 10, 1);
-                    tplayer.sendMessage(prefix + ChatColor.GRAY + "Your rank was set to " + ChatColor.GREEN + group);
+                    tplayer.sendMessage(prefix + colorize(this.plugin.getConfig().getString("YourRankWasSet")).replaceAll("%rank%", group));
                 }
             } else {
                 sender.sendMessage(colorize(this.plugin.getConfig().getString("NoPermission")));
