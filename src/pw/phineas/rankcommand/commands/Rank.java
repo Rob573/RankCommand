@@ -33,7 +33,6 @@ public class Rank implements CommandExecutor {
             if(sender.hasPermission("rankcommand.use")) {
                 if(args.length > 2 || args.length < 2) {
                     sender.sendMessage(prefix + colorize(this.plugin.getConfig().getString("WrongArgs")));
-                    ((Player) sender).playSound(((Player) sender).getLocation(), Sound.NOTE_BASS, 10, 1);
                 }
 
                 if(args.length == 2) {
@@ -52,13 +51,10 @@ public class Rank implements CommandExecutor {
                     PermissionGroup[] groups = { PermissionsEx.getPermissionManager().getGroup(group) };
                     PermissionsEx.getUser(target).setGroups(groups);
                     sender.sendMessage(prefix + colorize(this.plugin.getConfig().getString("SetRank")).replaceAll("%player%", target.getName()).replaceAll("%rank%", group));
-                    target.playSound(target.getLocation(), Sound.NOTE_PIANO, 10, 1);
-                    ((Player) sender).playSound(((Player) sender).getLocation(), Sound.NOTE_PIANO, 10, 1);
                     target.sendMessage(prefix + colorize(this.plugin.getConfig().getString("YourRankWasSet")).replaceAll("%rank%", group));
                 }
             } else {
                 sender.sendMessage(colorize(this.plugin.getConfig().getString("NoPermission")));
-                ((Player) sender).playSound(((Player) sender).getLocation(), Sound.NOTE_BASS, 10, 1);
             }
         }
         return false;
