@@ -2,7 +2,6 @@ package pw.phineas.rankcommand.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -36,7 +35,7 @@ public class Rank implements CommandExecutor {
                 }
 
                 if(args.length == 2) {
-                    String tplayer = null;
+                    String tplayer;
 
                     try {
                         tplayer = Bukkit.getPlayer(args[0]).getName();
@@ -52,6 +51,12 @@ public class Rank implements CommandExecutor {
                     PermissionsEx.getUser(target).setGroups(groups);
                     sender.sendMessage(prefix + colorize(this.plugin.getConfig().getString("SetRank")).replaceAll("%player%", target.getName()).replaceAll("%rank%", group));
                     target.sendMessage(prefix + colorize(this.plugin.getConfig().getString("YourRankWasSet")).replaceAll("%rank%", group));
+
+                    if(this.plugin.getConfig().getBoolean("StaffMessage.enabled")) {
+                        Bukkit.getOnlinePlayers().stream().filter(player -> player.hasPermission("rankcommand.msg")).forEach(player -> {
+                            player.sendMessage(prefix + colorize(this.plugin.getConfig().getString("StaffMessage.message")).replaceAll("%player%", sender.getName()).replaceAll("%playerchanged%", target.getName()).replaceAll("%rankset%",group));
+                        });
+                    }
                 }
             } else {
                 sender.sendMessage(colorize(this.plugin.getConfig().getString("NoPermission")));
