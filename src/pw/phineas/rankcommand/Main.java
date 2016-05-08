@@ -21,7 +21,7 @@ public class Main extends JavaPlugin {
             getLogger().info("Failed to connect to MCStats! ;-;");
         }
 
-        getCommand("rank").setExecutor(new Rank(this));
+        getCommand("rankset").setExecutor(new Rank(this));
 
         saveDefaultConfig();
     }
