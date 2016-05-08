@@ -28,7 +28,7 @@ public class Rank implements CommandExecutor {
     @SuppressWarnings("deprecation")
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         String prefix = colorize(this.plugin.getConfig().getString("Prefix"));
-        if(cmd.getName().equalsIgnoreCase("rank")) {
+        if(cmd.getName().equalsIgnoreCase("rankset")) {
             if(sender.hasPermission("rankcommand.use")) {
                 if(args.length > 2 || args.length < 2) {
                     sender.sendMessage(prefix + colorize(this.plugin.getConfig().getString("WrongArgs")));
