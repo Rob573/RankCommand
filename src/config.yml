@@ -1,6 +1,6 @@
-Prefix: '&cRank» '
+Prefix: '&eMysticPerms» '
 NoPermission: '&7You do not have permission to use this command!'
-WrongArgs: '&7Use the command like this: /rank <player> <rank>'
+WrongArgs: '&7Use the command like this: /rankset <player> <rank>'
 SetRank: '&7Set &a%player%&7''s rank to &a%rank%'
 YourRankWasSet: '&7Your rank was set to &a%rank%'
 
